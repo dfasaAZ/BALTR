@@ -47,8 +47,12 @@
             this.oleDbDeleteCommand3 = new System.Data.OleDb.OleDbCommand();
             this.RecipesAdapter = new System.Data.OleDb.OleDbDataAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bDCafeDataSet = new BusinessProxyApp.BDCafeDataSet();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dishNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.блюдаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDCafeDataSet = new BusinessProxyApp.BDCafeDataSet();
             this.блюдаTableAdapter = new BusinessProxyApp.BDCafeDataSetTableAdapters.БлюдаTableAdapter();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.ингредиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -57,10 +61,6 @@
             this.рецептыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.рецептыTableAdapter = new BusinessProxyApp.BDCafeDataSetTableAdapters.РецептыTableAdapter();
             this.блюдаРецептыBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dishNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,8 +68,8 @@
             this.dishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ingredientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.блюдаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ингредиентыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -260,15 +260,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(439, 150);
             this.dataGridView1.TabIndex = 0;
             // 
-            // bDCafeDataSet
+            // idDataGridViewTextBoxColumn
             // 
-            this.bDCafeDataSet.DataSetName = "BDCafeDataSet";
-            this.bDCafeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 35;
+            // 
+            // dishNameDataGridViewTextBoxColumn
+            // 
+            this.dishNameDataGridViewTextBoxColumn.DataPropertyName = "DishName";
+            this.dishNameDataGridViewTextBoxColumn.HeaderText = "Название блюда";
+            this.dishNameDataGridViewTextBoxColumn.Name = "dishNameDataGridViewTextBoxColumn";
+            this.dishNameDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Цена";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // weightDataGridViewTextBoxColumn
+            // 
+            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
+            this.weightDataGridViewTextBoxColumn.HeaderText = "Вес";
+            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
             // 
             // блюдаBindingSource
             // 
             this.блюдаBindingSource.DataMember = "Блюда";
             this.блюдаBindingSource.DataSource = this.bDCafeDataSet;
+            // 
+            // bDCafeDataSet
+            // 
+            this.bDCafeDataSet.DataSetName = "BDCafeDataSet";
+            this.bDCafeDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // блюдаTableAdapter
             // 
@@ -327,32 +353,6 @@
             this.блюдаРецептыBindingSource.DataMember = "БлюдаРецепты";
             this.блюдаРецептыBindingSource.DataSource = this.блюдаBindingSource;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 35;
-            // 
-            // dishNameDataGridViewTextBoxColumn
-            // 
-            this.dishNameDataGridViewTextBoxColumn.DataPropertyName = "DishName";
-            this.dishNameDataGridViewTextBoxColumn.HeaderText = "Название блюда";
-            this.dishNameDataGridViewTextBoxColumn.Name = "dishNameDataGridViewTextBoxColumn";
-            this.dishNameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Цена";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // weightDataGridViewTextBoxColumn
-            // 
-            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
-            this.weightDataGridViewTextBoxColumn.HeaderText = "Вес";
-            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            // 
             // idDataGridViewTextBoxColumn1
             // 
             this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
@@ -363,14 +363,14 @@
             // productNameDataGridViewTextBoxColumn
             // 
             this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "Название ингредиента";
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
             this.productNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // priceDataGridViewTextBoxColumn1
             // 
             this.priceDataGridViewTextBoxColumn1.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn1.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn1.HeaderText = "Цена";
             this.priceDataGridViewTextBoxColumn1.Name = "priceDataGridViewTextBoxColumn1";
             // 
             // idDataGridViewTextBoxColumn2
@@ -385,7 +385,7 @@
             this.dishDataGridViewTextBoxColumn.DataPropertyName = "dish";
             this.dishDataGridViewTextBoxColumn.DataSource = this.блюдаBindingSource;
             this.dishDataGridViewTextBoxColumn.DisplayMember = "DishName";
-            this.dishDataGridViewTextBoxColumn.HeaderText = "dish";
+            this.dishDataGridViewTextBoxColumn.HeaderText = "Блюдо";
             this.dishDataGridViewTextBoxColumn.Name = "dishDataGridViewTextBoxColumn";
             this.dishDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dishDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -397,7 +397,7 @@
             this.ingredientDataGridViewTextBoxColumn.DataPropertyName = "ingredient";
             this.ingredientDataGridViewTextBoxColumn.DataSource = this.ингредиентыBindingSource;
             this.ingredientDataGridViewTextBoxColumn.DisplayMember = "ProductName";
-            this.ingredientDataGridViewTextBoxColumn.HeaderText = "ingredient";
+            this.ingredientDataGridViewTextBoxColumn.HeaderText = "Ингредиент";
             this.ingredientDataGridViewTextBoxColumn.Name = "ingredientDataGridViewTextBoxColumn";
             this.ingredientDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ingredientDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -416,8 +416,8 @@
             this.Text = "Кафе \"Сюзанна\"";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.блюдаBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ингредиентыBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
