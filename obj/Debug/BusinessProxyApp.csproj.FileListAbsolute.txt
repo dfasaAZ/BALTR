@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\BusinessProxyApp.exe.config
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\BusinessProxyApp.exe
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\BusinessProxyApp.pdb
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.Properties.Resources.resources
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.csproj.GenerateResource.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.exe
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.pdb
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\BDTimeSheet.accdb
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.Form1.resources
