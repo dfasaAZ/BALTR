@@ -1,6 +1,6 @@
 ﻿namespace BusinessProxyApp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -45,32 +45,57 @@
             this.oleDbUpdateCommand3 = new System.Data.OleDb.OleDbCommand();
             this.oleDbDeleteCommand3 = new System.Data.OleDb.OleDbCommand();
             this.TimeTableAdapter = new System.Data.OleDb.OleDbDataAdapter();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bDTimeSheetDataSet = new BusinessProxyApp.BDTimeSheetDataSet();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.EmployeesTableAdapter();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.jobsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.jobsTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.JobsTableAdapter();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.timeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timeTableTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.TimeTableTableAdapter();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.baseSalaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeesTable = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.jobsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bDTimeSheetDataSet = new BusinessProxyApp.BDTimeSheetDataSet();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeesTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.EmployeesTableAdapter();
+            this.jobsTable = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.baseSalaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobsTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.JobsTableAdapter();
+            this.timesheetTable = new System.Windows.Forms.DataGridView();
             this.workDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isPresentDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.timeTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.timeTableTableAdapter = new BusinessProxyApp.BDTimeSheetDataSetTableAdapters.TimeTableTableAdapter();
+            this.UpdateButton1 = new System.Windows.Forms.Button();
+            this.UpdateButton2 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.timesheetEdit = new System.Windows.Forms.DataGridView();
+            this.timeTableEdit = new System.Windows.Forms.BindingSource(this.components);
+            this.UpdateButton3 = new System.Windows.Forms.Button();
+            this.workDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.isPresentDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TimesheetFilter = new System.Windows.Forms.ComboBox();
+            this.JobFilter = new System.Windows.Forms.TextBox();
+            this.ClearFilters = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.EmployeesFilter = new System.Windows.Forms.TextBox();
+            this.EmployeesFilter1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDTimeSheetDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobsTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeTableEdit)).BeginInit();
             this.SuspendLayout();
             // 
             // oleDbConnection1
@@ -234,106 +259,21 @@
                         new System.Data.Common.DataColumnMapping("IsPresent", "IsPresent")})});
             this.TimeTableAdapter.UpdateCommand = this.oleDbUpdateCommand3;
             // 
-            // dataGridView1
+            // employeesTable
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeesTable.AutoGenerateColumns = false;
+            this.employeesTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.employeesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.employeesTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.fullNameDataGridViewTextBoxColumn,
             this.jobDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.employeesBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 27);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(348, 150);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // bDTimeSheetDataSet
-            // 
-            this.bDTimeSheetDataSet.DataSetName = "BDTimeSheetDataSet";
-            this.bDTimeSheetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "Employees";
-            this.employeesBindingSource.DataSource = this.bDTimeSheetDataSet;
-            // 
-            // employeesTableAdapter
-            // 
-            this.employeesTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn1,
-            this.titleDataGridViewTextBoxColumn,
-            this.baseSalaryDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.jobsBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(393, 27);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.Size = new System.Drawing.Size(361, 150);
-            this.dataGridView2.TabIndex = 1;
-            // 
-            // jobsBindingSource
-            // 
-            this.jobsBindingSource.DataMember = "Jobs";
-            this.jobsBindingSource.DataSource = this.bDTimeSheetDataSet;
-            // 
-            // jobsTableAdapter
-            // 
-            this.jobsTableAdapter.ClearBeforeFill = true;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AutoGenerateColumns = false;
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.workDateDataGridViewTextBoxColumn,
-            this.employeeDataGridViewTextBoxColumn,
-            this.isPresentDataGridViewCheckBoxColumn});
-            this.dataGridView3.DataSource = this.timeTableBindingSource;
-            this.dataGridView3.Location = new System.Drawing.Point(21, 201);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.Size = new System.Drawing.Size(348, 150);
-            this.dataGridView3.TabIndex = 2;
-            // 
-            // timeTableBindingSource
-            // 
-            this.timeTableBindingSource.DataMember = "TimeTable";
-            this.timeTableBindingSource.DataSource = this.bDTimeSheetDataSet;
-            // 
-            // timeTableTableAdapter
-            // 
-            this.timeTableTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn1.FillWeight = 45.68528F;
-            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.FillWeight = 127.1574F;
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Наименование должности";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            // 
-            // baseSalaryDataGridViewTextBoxColumn
-            // 
-            this.baseSalaryDataGridViewTextBoxColumn.DataPropertyName = "BaseSalary";
-            this.baseSalaryDataGridViewTextBoxColumn.FillWeight = 127.1574F;
-            this.baseSalaryDataGridViewTextBoxColumn.HeaderText = "Минимальный оклад";
-            this.baseSalaryDataGridViewTextBoxColumn.Name = "baseSalaryDataGridViewTextBoxColumn";
+            this.employeesTable.DataSource = this.employeesBindingSource;
+            this.employeesTable.Location = new System.Drawing.Point(21, 61);
+            this.employeesTable.Name = "employeesTable";
+            this.employeesTable.RowHeadersVisible = false;
+            this.employeesTable.Size = new System.Drawing.Size(348, 150);
+            this.employeesTable.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -361,12 +301,92 @@
             this.jobDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.jobDataGridViewTextBoxColumn.ValueMember = "id";
             // 
+            // jobsBindingSource
+            // 
+            this.jobsBindingSource.DataMember = "Jobs";
+            this.jobsBindingSource.DataSource = this.bDTimeSheetDataSet;
+            // 
+            // bDTimeSheetDataSet
+            // 
+            this.bDTimeSheetDataSet.DataSetName = "BDTimeSheetDataSet";
+            this.bDTimeSheetDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataMember = "Employees";
+            this.employeesBindingSource.DataSource = this.bDTimeSheetDataSet;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
+            // jobsTable
+            // 
+            this.jobsTable.AutoGenerateColumns = false;
+            this.jobsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.jobsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.jobsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn1,
+            this.titleDataGridViewTextBoxColumn,
+            this.baseSalaryDataGridViewTextBoxColumn});
+            this.jobsTable.DataSource = this.jobsBindingSource;
+            this.jobsTable.Location = new System.Drawing.Point(545, 61);
+            this.jobsTable.Name = "jobsTable";
+            this.jobsTable.RowHeadersVisible = false;
+            this.jobsTable.Size = new System.Drawing.Size(361, 150);
+            this.jobsTable.TabIndex = 1;
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn1.FillWeight = 45.68528F;
+            this.idDataGridViewTextBoxColumn1.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.FillWeight = 127.1574F;
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Наименование должности";
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // baseSalaryDataGridViewTextBoxColumn
+            // 
+            this.baseSalaryDataGridViewTextBoxColumn.DataPropertyName = "BaseSalary";
+            this.baseSalaryDataGridViewTextBoxColumn.FillWeight = 127.1574F;
+            this.baseSalaryDataGridViewTextBoxColumn.HeaderText = "Минимальный оклад";
+            this.baseSalaryDataGridViewTextBoxColumn.Name = "baseSalaryDataGridViewTextBoxColumn";
+            // 
+            // jobsTableAdapter
+            // 
+            this.jobsTableAdapter.ClearBeforeFill = true;
+            // 
+            // timesheetTable
+            // 
+            this.timesheetTable.AllowUserToAddRows = false;
+            this.timesheetTable.AllowUserToDeleteRows = false;
+            this.timesheetTable.AutoGenerateColumns = false;
+            this.timesheetTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.timesheetTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.timesheetTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.workDateDataGridViewTextBoxColumn,
+            this.employeeDataGridViewTextBoxColumn,
+            this.isPresentDataGridViewCheckBoxColumn});
+            this.timesheetTable.DataSource = this.timeTableBindingSource;
+            this.timesheetTable.Location = new System.Drawing.Point(21, 284);
+            this.timesheetTable.Name = "timesheetTable";
+            this.timesheetTable.ReadOnly = true;
+            this.timesheetTable.RowHeadersVisible = false;
+            this.timesheetTable.Size = new System.Drawing.Size(348, 150);
+            this.timesheetTable.TabIndex = 2;
+            // 
             // workDateDataGridViewTextBoxColumn
             // 
             this.workDateDataGridViewTextBoxColumn.DataPropertyName = "WorkDate";
             this.workDateDataGridViewTextBoxColumn.FillWeight = 76.14214F;
             this.workDateDataGridViewTextBoxColumn.HeaderText = "Дата";
             this.workDateDataGridViewTextBoxColumn.Name = "workDateDataGridViewTextBoxColumn";
+            this.workDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // employeeDataGridViewTextBoxColumn
             // 
@@ -376,6 +396,7 @@
             this.employeeDataGridViewTextBoxColumn.FillWeight = 139.1837F;
             this.employeeDataGridViewTextBoxColumn.HeaderText = "Сотрудник";
             this.employeeDataGridViewTextBoxColumn.Name = "employeeDataGridViewTextBoxColumn";
+            this.employeeDataGridViewTextBoxColumn.ReadOnly = true;
             this.employeeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.employeeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.employeeDataGridViewTextBoxColumn.ValueMember = "id";
@@ -386,26 +407,288 @@
             this.isPresentDataGridViewCheckBoxColumn.FillWeight = 84.67413F;
             this.isPresentDataGridViewCheckBoxColumn.HeaderText = "Присутствует?";
             this.isPresentDataGridViewCheckBoxColumn.Name = "isPresentDataGridViewCheckBoxColumn";
+            this.isPresentDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
-            // Form1
+            // timeTableBindingSource
+            // 
+            this.timeTableBindingSource.DataMember = "TimeTable";
+            this.timeTableBindingSource.DataSource = this.bDTimeSheetDataSet;
+            // 
+            // timeTableTableAdapter
+            // 
+            this.timeTableTableAdapter.ClearBeforeFill = true;
+            // 
+            // UpdateButton1
+            // 
+            this.UpdateButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateButton1.Location = new System.Drawing.Point(375, 61);
+            this.UpdateButton1.Name = "UpdateButton1";
+            this.UpdateButton1.Size = new System.Drawing.Size(74, 88);
+            this.UpdateButton1.TabIndex = 3;
+            this.UpdateButton1.Text = "Обновить";
+            this.UpdateButton1.UseVisualStyleBackColor = true;
+            this.UpdateButton1.Click += new System.EventHandler(this.UpdateButton1_Click);
+            // 
+            // UpdateButton2
+            // 
+            this.UpdateButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateButton2.Location = new System.Drawing.Point(932, 61);
+            this.UpdateButton2.Name = "UpdateButton2";
+            this.UpdateButton2.Size = new System.Drawing.Size(78, 88);
+            this.UpdateButton2.TabIndex = 4;
+            this.UpdateButton2.Text = "Обновить";
+            this.UpdateButton2.UseVisualStyleBackColor = true;
+            this.UpdateButton2.Click += new System.EventHandler(this.UpdateButton2_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(545, 258);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(300, 20);
+            this.dateTimePicker1.TabIndex = 5;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // timesheetEdit
+            // 
+            this.timesheetEdit.AutoGenerateColumns = false;
+            this.timesheetEdit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.timesheetEdit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.timesheetEdit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.workDateDataGridViewTextBoxColumn1,
+            this.employeeDataGridViewTextBoxColumn1,
+            this.isPresentDataGridViewCheckBoxColumn1});
+            this.timesheetEdit.DataSource = this.timeTableEdit;
+            this.timesheetEdit.Location = new System.Drawing.Point(545, 284);
+            this.timesheetEdit.Name = "timesheetEdit";
+            this.timesheetEdit.RowHeadersVisible = false;
+            this.timesheetEdit.Size = new System.Drawing.Size(300, 150);
+            this.timesheetEdit.TabIndex = 6;
+            this.timesheetEdit.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.timesheetEdit_DataError);
+            this.timesheetEdit.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.timesheetEdit_UserAddedRow);
+            // 
+            // timeTableEdit
+            // 
+            this.timeTableEdit.DataMember = "TimeTable";
+            this.timeTableEdit.DataSource = this.bDTimeSheetDataSet;
+            // 
+            // UpdateButton3
+            // 
+            this.UpdateButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateButton3.Location = new System.Drawing.Point(851, 284);
+            this.UpdateButton3.Name = "UpdateButton3";
+            this.UpdateButton3.Size = new System.Drawing.Size(87, 88);
+            this.UpdateButton3.TabIndex = 7;
+            this.UpdateButton3.Text = "Обновить";
+            this.UpdateButton3.UseVisualStyleBackColor = true;
+            this.UpdateButton3.Click += new System.EventHandler(this.UpdateButton3_Click);
+            // 
+            // workDateDataGridViewTextBoxColumn1
+            // 
+            this.workDateDataGridViewTextBoxColumn1.DataPropertyName = "WorkDate";
+            this.workDateDataGridViewTextBoxColumn1.HeaderText = "WorkDate";
+            this.workDateDataGridViewTextBoxColumn1.Name = "workDateDataGridViewTextBoxColumn1";
+            this.workDateDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // employeeDataGridViewTextBoxColumn1
+            // 
+            this.employeeDataGridViewTextBoxColumn1.DataPropertyName = "Employee";
+            this.employeeDataGridViewTextBoxColumn1.DataSource = this.employeesBindingSource;
+            this.employeeDataGridViewTextBoxColumn1.DisplayMember = "FullName";
+            this.employeeDataGridViewTextBoxColumn1.HeaderText = "Сотрудник";
+            this.employeeDataGridViewTextBoxColumn1.Name = "employeeDataGridViewTextBoxColumn1";
+            this.employeeDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.employeeDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.employeeDataGridViewTextBoxColumn1.ValueMember = "id";
+            // 
+            // isPresentDataGridViewCheckBoxColumn1
+            // 
+            this.isPresentDataGridViewCheckBoxColumn1.DataPropertyName = "IsPresent";
+            this.isPresentDataGridViewCheckBoxColumn1.HeaderText = "Присутствует?";
+            this.isPresentDataGridViewCheckBoxColumn1.Name = "isPresentDataGridViewCheckBoxColumn1";
+            this.isPresentDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(542, 233);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Редактирование табеля";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 258);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Сводка посещаемости";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Сотрудники";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(542, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Должности";
+            // 
+            // TimesheetFilter
+            // 
+            this.TimesheetFilter.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.timeTableBindingSource, "Employee", true));
+            this.TimesheetFilter.DataSource = this.employeesBindingSource;
+            this.TimesheetFilter.DisplayMember = "FullName";
+            this.TimesheetFilter.FormattingEnabled = true;
+            this.TimesheetFilter.Location = new System.Drawing.Point(173, 255);
+            this.TimesheetFilter.Name = "TimesheetFilter";
+            this.TimesheetFilter.Size = new System.Drawing.Size(121, 21);
+            this.TimesheetFilter.TabIndex = 12;
+            this.TimesheetFilter.ValueMember = "id";
+            this.TimesheetFilter.SelectionChangeCommitted += new System.EventHandler(this.TimesheetFilter_SelectionChangeCommitted);
+            // 
+            // JobFilter
+            // 
+            this.JobFilter.Location = new System.Drawing.Point(629, 25);
+            this.JobFilter.Name = "JobFilter";
+            this.JobFilter.Size = new System.Drawing.Size(100, 20);
+            this.JobFilter.TabIndex = 15;
+            this.JobFilter.TextChanged += new System.EventHandler(this.JobFilter_TextChanged);
+            // 
+            // ClearFilters
+            // 
+            this.ClearFilters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClearFilters.Location = new System.Drawing.Point(375, 30);
+            this.ClearFilters.Name = "ClearFilters";
+            this.ClearFilters.Size = new System.Drawing.Size(63, 20);
+            this.ClearFilters.TabIndex = 16;
+            this.ClearFilters.Text = "Очистить";
+            this.ClearFilters.UseVisualStyleBackColor = true;
+            this.ClearFilters.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(375, 255);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(63, 20);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Очистить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Location = new System.Drawing.Point(932, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(63, 20);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Очистить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // EmployeesFilter
+            // 
+            this.EmployeesFilter.Location = new System.Drawing.Point(99, 30);
+            this.EmployeesFilter.Name = "EmployeesFilter";
+            this.EmployeesFilter.Size = new System.Drawing.Size(100, 20);
+            this.EmployeesFilter.TabIndex = 19;
+            this.EmployeesFilter.TextChanged += new System.EventHandler(this.EmployeesFilter_TextChanged);
+            // 
+            // EmployeesFilter1
+            // 
+            this.EmployeesFilter1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.employeesBindingSource, "Job", true));
+            this.EmployeesFilter1.DataSource = this.jobsBindingSource;
+            this.EmployeesFilter1.DisplayMember = "Title";
+            this.EmployeesFilter1.FormattingEnabled = true;
+            this.EmployeesFilter1.Location = new System.Drawing.Point(239, 29);
+            this.EmployeesFilter1.Name = "EmployeesFilter1";
+            this.EmployeesFilter1.Size = new System.Drawing.Size(121, 21);
+            this.EmployeesFilter1.TabIndex = 14;
+            this.EmployeesFilter1.ValueMember = "id";
+            this.EmployeesFilter1.SelectionChangeCommitted += new System.EventHandler(this.EmployeesFilter1_SelectedIndexChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(932, 172);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(374, 172);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "Удалить";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(851, 390);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 22;
+            this.button5.Text = "Удалить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(1138, 518);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EmployeesFilter);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ClearFilters);
+            this.Controls.Add(this.JobFilter);
+            this.Controls.Add(this.EmployeesFilter1);
+            this.Controls.Add(this.TimesheetFilter);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UpdateButton3);
+            this.Controls.Add(this.timesheetEdit);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.UpdateButton2);
+            this.Controls.Add(this.UpdateButton1);
+            this.Controls.Add(this.timesheetTable);
+            this.Controls.Add(this.jobsTable);
+            this.Controls.Add(this.employeesTable);
+            this.Name = "MainForm";
             this.Text = "Табель рабочего времени";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDTimeSheetDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jobsTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timesheetEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timeTableEdit)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -427,14 +710,14 @@
         private System.Data.OleDb.OleDbCommand oleDbUpdateCommand3;
         private System.Data.OleDb.OleDbCommand oleDbDeleteCommand3;
         private System.Data.OleDb.OleDbDataAdapter TimeTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView employeesTable;
         private BDTimeSheetDataSet bDTimeSheetDataSet;
         private System.Windows.Forms.BindingSource employeesBindingSource;
         private BDTimeSheetDataSetTableAdapters.EmployeesTableAdapter employeesTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView jobsTable;
         private System.Windows.Forms.BindingSource jobsBindingSource;
         private BDTimeSheetDataSetTableAdapters.JobsTableAdapter jobsTableAdapter;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView timesheetTable;
         private System.Windows.Forms.BindingSource timeTableBindingSource;
         private BDTimeSheetDataSetTableAdapters.TimeTableTableAdapter timeTableTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
@@ -446,6 +729,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn workDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewComboBoxColumn employeeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isPresentDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button UpdateButton1;
+        private System.Windows.Forms.Button UpdateButton2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView timesheetEdit;
+        private System.Windows.Forms.BindingSource timeTableEdit;
+        private System.Windows.Forms.Button UpdateButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn workDateDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn employeeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isPresentDataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox TimesheetFilter;
+        private System.Windows.Forms.TextBox JobFilter;
+        private System.Windows.Forms.Button ClearFilters;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox EmployeesFilter;
+        private System.Windows.Forms.ComboBox EmployeesFilter1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

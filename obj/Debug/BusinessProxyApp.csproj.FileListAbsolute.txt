@@ -9,4 +9,4 @@ C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Busi
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.exe
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.pdb
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\BDTimeSheet.accdb
-C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.Form1.resources
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.MainForm.resources
