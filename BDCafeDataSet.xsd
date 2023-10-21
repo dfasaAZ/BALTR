@@ -178,46 +178,46 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="BDCafeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="BDCafeDataSet" msprop:Generator_DataSetName="BDCafeDataSet">
+  <xs:element name="BDCafeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="BDCafeDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BDCafeDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Блюда" msprop:Generator_RowEvHandlerName="БлюдаRowChangeEventHandler" msprop:Generator_RowDeletedName="БлюдаRowDeleted" msprop:Generator_RowDeletingName="БлюдаRowDeleting" msprop:Generator_RowEvArgName="БлюдаRowChangeEvent" msprop:Generator_TablePropName="Блюда" msprop:Generator_RowChangedName="БлюдаRowChanged" msprop:Generator_RowChangingName="БлюдаRowChanging" msprop:Generator_TableClassName="БлюдаDataTable" msprop:Generator_RowClassName="БлюдаRow" msprop:Generator_TableVarName="tableБлюда" msprop:Generator_UserTableName="Блюда">
+        <xs:element name="Блюда" msprop:Generator_RowClassName="БлюдаRow" msprop:Generator_RowEvHandlerName="БлюдаRowChangeEventHandler" msprop:Generator_RowDeletedName="БлюдаRowDeleted" msprop:Generator_RowDeletingName="БлюдаRowDeleting" msprop:Generator_RowEvArgName="БлюдаRowChangeEvent" msprop:Generator_TablePropName="Блюда" msprop:Generator_RowChangedName="БлюдаRowChanged" msprop:Generator_UserTableName="Блюда" msprop:Generator_RowChangingName="БлюдаRowChanging" msprop:Generator_TableClassName="БлюдаDataTable" msprop:Generator_TableVarName="tableБлюда">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="DishName" msprop:Generator_ColumnPropNameInRow="DishName" msprop:Generator_ColumnPropNameInTable="DishNameColumn" msprop:Generator_ColumnVarNameInTable="columnDishName" msprop:Generator_UserColumnName="DishName" minOccurs="0">
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" />
+              <xs:element name="DishName" msprop:Generator_UserColumnName="DishName" msprop:Generator_ColumnPropNameInTable="DishNameColumn" msprop:Generator_ColumnPropNameInRow="DishName" msprop:Generator_ColumnVarNameInTable="columnDishName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_UserColumnName="Price" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Weight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_UserColumnName="Weight" type="xs:int" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Weight" msprop:Generator_UserColumnName="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Ингредиенты" msprop:Generator_RowEvHandlerName="ИнгредиентыRowChangeEventHandler" msprop:Generator_RowDeletedName="ИнгредиентыRowDeleted" msprop:Generator_RowDeletingName="ИнгредиентыRowDeleting" msprop:Generator_RowEvArgName="ИнгредиентыRowChangeEvent" msprop:Generator_TablePropName="Ингредиенты" msprop:Generator_RowChangedName="ИнгредиентыRowChanged" msprop:Generator_RowChangingName="ИнгредиентыRowChanging" msprop:Generator_TableClassName="ИнгредиентыDataTable" msprop:Generator_RowClassName="ИнгредиентыRow" msprop:Generator_TableVarName="tableИнгредиенты" msprop:Generator_UserTableName="Ингредиенты">
+        <xs:element name="Ингредиенты" msprop:Generator_RowClassName="ИнгредиентыRow" msprop:Generator_RowEvHandlerName="ИнгредиентыRowChangeEventHandler" msprop:Generator_RowDeletedName="ИнгредиентыRowDeleted" msprop:Generator_RowDeletingName="ИнгредиентыRowDeleting" msprop:Generator_RowEvArgName="ИнгредиентыRowChangeEvent" msprop:Generator_TablePropName="Ингредиенты" msprop:Generator_RowChangedName="ИнгредиентыRowChanged" msprop:Generator_UserTableName="Ингредиенты" msprop:Generator_RowChangingName="ИнгредиентыRowChanging" msprop:Generator_TableClassName="ИнгредиентыDataTable" msprop:Generator_TableVarName="tableИнгредиенты">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="ProductName" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_ColumnVarNameInTable="columnProductName" msprop:Generator_UserColumnName="ProductName" minOccurs="0">
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" />
+              <xs:element name="ProductName" msprop:Generator_UserColumnName="ProductName" msprop:Generator_ColumnPropNameInTable="ProductNameColumn" msprop:Generator_ColumnPropNameInRow="ProductName" msprop:Generator_ColumnVarNameInTable="columnProductName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="255" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_UserColumnName="Price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Рецепты" msprop:Generator_RowEvHandlerName="РецептыRowChangeEventHandler" msprop:Generator_RowDeletedName="РецептыRowDeleted" msprop:Generator_RowDeletingName="РецептыRowDeleting" msprop:Generator_RowEvArgName="РецептыRowChangeEvent" msprop:Generator_TablePropName="Рецепты" msprop:Generator_RowChangedName="РецептыRowChanged" msprop:Generator_RowChangingName="РецептыRowChanging" msprop:Generator_TableClassName="РецептыDataTable" msprop:Generator_RowClassName="РецептыRow" msprop:Generator_TableVarName="tableРецепты" msprop:Generator_UserTableName="Рецепты">
+        <xs:element name="Рецепты" msprop:Generator_RowClassName="РецептыRow" msprop:Generator_RowEvHandlerName="РецептыRowChangeEventHandler" msprop:Generator_RowDeletedName="РецептыRowDeleted" msprop:Generator_RowDeletingName="РецептыRowDeleting" msprop:Generator_RowEvArgName="РецептыRowChangeEvent" msprop:Generator_TablePropName="Рецепты" msprop:Generator_RowChangedName="РецептыRowChanged" msprop:Generator_UserTableName="Рецепты" msprop:Generator_RowChangingName="РецептыRowChanging" msprop:Generator_TableClassName="РецептыDataTable" msprop:Generator_TableVarName="tableРецепты">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_UserColumnName="id" type="xs:int" />
-              <xs:element name="dish" msprop:Generator_ColumnPropNameInRow="dish" msprop:Generator_ColumnPropNameInTable="dishColumn" msprop:Generator_ColumnVarNameInTable="columndish" msprop:Generator_UserColumnName="dish" type="xs:int" minOccurs="0" />
-              <xs:element name="ingredient" msprop:Generator_ColumnPropNameInRow="ingredient" msprop:Generator_ColumnPropNameInTable="ingredientColumn" msprop:Generator_ColumnVarNameInTable="columningredient" msprop:Generator_UserColumnName="ingredient" type="xs:int" minOccurs="0" />
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" />
+              <xs:element name="dish" msprop:Generator_UserColumnName="dish" msprop:Generator_ColumnPropNameInTable="dishColumn" msprop:Generator_ColumnPropNameInRow="dish" msprop:Generator_ColumnVarNameInTable="columndish" type="xs:int" minOccurs="0" />
+              <xs:element name="ingredient" msprop:Generator_UserColumnName="ingredient" msprop:Generator_ColumnPropNameInTable="ingredientColumn" msprop:Generator_ColumnPropNameInRow="ingredient" msprop:Generator_ColumnVarNameInTable="columningredient" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -238,8 +238,8 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="БлюдаРецепты" msdata:parent="Блюда" msdata:child="Рецепты" msdata:parentkey="id" msdata:childkey="dish" msprop:Generator_UserParentTable="Блюда" msprop:Generator_UserChildTable="Рецепты" msprop:Generator_RelationVarName="relationБлюдаРецепты" msprop:Generator_ChildPropName="GetРецептыRows" msprop:Generator_ParentPropName="БлюдаRow" msprop:Generator_UserRelationName="БлюдаРецепты" />
-      <msdata:Relationship name="ИнгредиентыРецепты" msdata:parent="Ингредиенты" msdata:child="Рецепты" msdata:parentkey="id" msdata:childkey="ingredient" msprop:Generator_UserParentTable="Ингредиенты" msprop:Generator_UserChildTable="Рецепты" msprop:Generator_RelationVarName="relationИнгредиентыРецепты" msprop:Generator_ChildPropName="GetРецептыRows" msprop:Generator_ParentPropName="ИнгредиентыRow" msprop:Generator_UserRelationName="ИнгредиентыРецепты" />
+      <msdata:Relationship name="БлюдаРецепты" msdata:parent="Блюда" msdata:child="Рецепты" msdata:parentkey="id" msdata:childkey="dish" msprop:Generator_UserParentTable="Блюда" msprop:Generator_UserChildTable="Рецепты" msprop:Generator_RelationVarName="relationБлюдаРецепты" msprop:Generator_ChildPropName="GetРецептыRows" msprop:Generator_UserRelationName="БлюдаРецепты" msprop:Generator_ParentPropName="БлюдаRow" />
+      <msdata:Relationship name="ИнгредиентыРецепты" msdata:parent="Ингредиенты" msdata:child="Рецепты" msdata:parentkey="id" msdata:childkey="ingredient" msprop:Generator_UserParentTable="Ингредиенты" msprop:Generator_UserChildTable="Рецепты" msprop:Generator_RelationVarName="relationИнгредиентыРецепты" msprop:Generator_ChildPropName="GetРецептыRows" msprop:Generator_UserRelationName="ИнгредиентыРецепты" msprop:Generator_ParentPropName="ИнгредиентыRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

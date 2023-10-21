@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDCafeDataSet.cs">
+      <DependentUpon>BDCafeDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="BDCafeDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
