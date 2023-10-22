@@ -80,6 +80,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.docButton2 = new System.Windows.Forms.Button();
             this.docButton1 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ImportExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dishGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.блюдаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).BeginInit();
@@ -89,6 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.рецептыBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // oleDbConnection1
@@ -575,11 +582,64 @@
             this.docButton1.UseVisualStyleBackColor = true;
             this.docButton1.Click += new System.EventHandler(this.docButton1_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Location = new System.Drawing.Point(574, 157);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(156, 112);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Экспорт";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 68);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Рецепты";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(7, 34);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(143, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Ингредиенты";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox3.Controls.Add(this.ImportExcel);
+            this.groupBox3.Location = new System.Drawing.Point(772, 157);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(156, 76);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Импорт";
+            // 
+            // ImportExcel
+            // 
+            this.ImportExcel.Location = new System.Drawing.Point(7, 34);
+            this.ImportExcel.Name = "ImportExcel";
+            this.ImportExcel.Size = new System.Drawing.Size(143, 23);
+            this.ImportExcel.TabIndex = 0;
+            this.ImportExcel.Text = "Загрузить данные";
+            this.ImportExcel.UseVisualStyleBackColor = true;
+            this.ImportExcel.Click += new System.EventHandler(this.ImportExcel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 469);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -595,6 +655,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -652,6 +714,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button docButton2;
         private System.Windows.Forms.Button docButton1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button ImportExcel;
     }
 }
 

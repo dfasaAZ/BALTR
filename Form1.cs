@@ -61,7 +61,7 @@ namespace BusinessProxyApp
 
         private void recipeGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show("Для заполнения таблицы необходимо очистить фильтры");
+           // MessageBox.Show("Для заполнения таблицы необходимо очистить фильтры");
         }
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
@@ -190,6 +190,92 @@ namespace BusinessProxyApp
             doc.Close();
             wordApp.Quit();
             docCreateDialog(tmpPath);
+        }
+
+        private void ImportExcel_Click(object sender, EventArgs e)
+        {
+            
+            var tables =new[]{ "Таблица_Блюда", "Таблица_Ингредиенты", "Таблица_Рецепты" };
+            string relativePath = Path.Combine(Environment.CurrentDirectory, "ExcelImport1.xlsx");
+            Excel.Application excelApp = new Excel.Application();
+            Excel.Workbook workbook = excelApp.Workbooks.Open(relativePath);
+            try
+            {//////////////////////////////////////////////////////////////////
+                Excel.Worksheet worksheet = workbook.Sheets["Лист1"];
+                Excel.ListObject table = worksheet.ListObjects[tables[0]];
+                var IData = table.Range.Value;
+
+                int rowCount = IData.GetLength(0);
+                int columnCount = IData.GetLength(1);
+
+                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                {
+                    object[] rowData = new object[columnCount];
+
+                    for (int j = 1; j <= columnCount; j++)
+                    {
+                        rowData[j - 1] = IData[i, j];
+                    }
+                    if (!bDCafeDataSet.Блюда.Rows.Contains(rowData[0]))
+                    {
+                        bDCafeDataSet.Блюда.Rows.Add(rowData);
+                    }
+
+                }
+                ///////////////////////////////////////////////////////////////////////////////////
+                worksheet = workbook.Sheets["Лист2"];
+                table = worksheet.ListObjects[tables[1]];
+                IData = table.Range.Value;
+
+                rowCount = IData.GetLength(0);
+                columnCount = IData.GetLength(1);
+                
+                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                {
+                    object[] rowData = new object[columnCount];
+
+                    for (int j = 1; j <= columnCount; j++)
+                    {
+                        rowData[j - 1] = IData[i, j];
+                    }
+                    if (!bDCafeDataSet.Ингредиенты.Rows.Contains(rowData[0]))
+                    {
+                        bDCafeDataSet.Ингредиенты.Rows.Add(rowData);
+                    }
+                    
+                }
+                //////////////////////////////////////////////////////////////////////////////////////////
+                worksheet = workbook.Sheets["Лист3"];
+                table = worksheet.ListObjects[tables[2]];
+                IData = table.Range.Value;
+
+                rowCount = IData.GetLength(0);
+                columnCount = IData.GetLength(1);
+
+                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                {
+                    object[] rowData = new object[columnCount];
+
+                    for (int j = 1; j <= columnCount; j++)
+                    {
+                        rowData[j - 1] = IData[i, j];
+                    }
+                    if (!bDCafeDataSet.Рецепты.Rows.Contains(rowData[0]))
+                    {
+                        bDCafeDataSet.Рецепты.Rows.Add(rowData);
+                    }
+
+                }
+                //////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+            catch(Exception ex) {
+                workbook.Close();
+                excelApp.Quit();
+                MessageBox.Show(ex.Message);
+                
+            }
+            workbook.Close();
+            excelApp.Quit();
         }
     }
 }
