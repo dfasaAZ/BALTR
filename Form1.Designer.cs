@@ -66,7 +66,6 @@
             this.ingredientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.рецептыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.рецептыTableAdapter = new BusinessProxyApp.BDCafeDataSetTableAdapters.РецептыTableAdapter();
-            this.блюдаРецептыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.SaveButton3 = new System.Windows.Forms.Button();
             this.SaveButton2 = new System.Windows.Forms.Button();
@@ -78,6 +77,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.docButton2 = new System.Windows.Forms.Button();
+            this.docButton1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dishGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.блюдаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).BeginInit();
@@ -85,8 +87,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ингредиентыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.рецептыBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.блюдаРецептыBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // oleDbConnection1
@@ -408,15 +410,10 @@
             // 
             this.рецептыTableAdapter.ClearBeforeFill = true;
             // 
-            // блюдаРецептыBindingSource
-            // 
-            this.блюдаРецептыBindingSource.DataMember = "БлюдаРецепты";
-            this.блюдаРецептыBindingSource.DataSource = this.блюдаBindingSource;
-            // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.SaveButton3);
             this.panel1.Controls.Add(this.SaveButton2);
             this.panel1.Controls.Add(this.SaveButton1);
@@ -432,7 +429,7 @@
             this.panel1.Controls.Add(this.recipeGridView);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1039, 445);
+            this.panel1.Size = new System.Drawing.Size(532, 445);
             this.panel1.TabIndex = 3;
             // 
             // SaveButton3
@@ -546,11 +543,44 @@
             this.comboBox1.ValueMember = "id";
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.groupBox1.Controls.Add(this.docButton2);
+            this.groupBox1.Controls.Add(this.docButton1);
+            this.groupBox1.Location = new System.Drawing.Point(574, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(156, 112);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Документы";
+            // 
+            // docButton2
+            // 
+            this.docButton2.Location = new System.Drawing.Point(7, 68);
+            this.docButton2.Name = "docButton2";
+            this.docButton2.Size = new System.Drawing.Size(143, 23);
+            this.docButton2.TabIndex = 1;
+            this.docButton2.Text = "Состав блюда";
+            this.docButton2.UseVisualStyleBackColor = true;
+            this.docButton2.Click += new System.EventHandler(this.docButton2_Click);
+            // 
+            // docButton1
+            // 
+            this.docButton1.Location = new System.Drawing.Point(7, 34);
+            this.docButton1.Name = "docButton1";
+            this.docButton1.Size = new System.Drawing.Size(143, 23);
+            this.docButton1.TabIndex = 0;
+            this.docButton1.Text = "Карточка ингредиента";
+            this.docButton1.UseVisualStyleBackColor = true;
+            this.docButton1.Click += new System.EventHandler(this.docButton1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 469);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Кафе \"Сюзанна\"";
@@ -562,9 +592,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ингредиентыBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.рецептыBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.блюдаРецептыBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -619,6 +649,9 @@
         private System.Windows.Forms.Button SaveButton3;
         private System.Windows.Forms.Button SaveButton2;
         private System.Windows.Forms.Button SaveButton1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button docButton2;
+        private System.Windows.Forms.Button docButton1;
     }
 }
 

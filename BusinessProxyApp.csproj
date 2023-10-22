@@ -33,7 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="BDCafeDataSet.xsc">
       <DependentUpon>BDCafeDataSet.xsd</DependentUpon>
@@ -85,6 +94,12 @@
     <None Include="BDCafeDataSet.xss">
       <DependentUpon>BDCafeDataSet.xsd</DependentUpon>
     </None>
+    <AdditionalFiles Include="DocTemplate1.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+    <AdditionalFiles Include="DocTemplate2.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
