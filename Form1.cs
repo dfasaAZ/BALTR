@@ -21,12 +21,14 @@ namespace BusinessProxyApp
     {
         public Form1()
         {
+            
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDCafeDataSet.Рецепты". При необходимости она может быть перемещена или удалена.
+            oleDbConnection1.ConnectionString.Replace(@"C:\\Users\\Lenovo\\Desktop\\Development\\BusinessApps\\BusinessProxyApp\\BDCafe.accdb", Path.Combine(Environment.CurrentDirectory, "BDCafe.accdb"));
             this.рецептыTableAdapter.Fill(this.bDCafeDataSet.Рецепты);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDCafeDataSet.Ингредиенты". При необходимости она может быть перемещена или удалена.
             this.ингредиентыTableAdapter.Fill(this.bDCafeDataSet.Ингредиенты);
@@ -200,7 +202,7 @@ namespace BusinessProxyApp
             Excel.Application excelApp = new Excel.Application();
             Excel.Workbook workbook = excelApp.Workbooks.Open(relativePath);
             try
-            {//////////////////////////////////////////////////////////////////
+            {///////////////////////Заполнение первой таблицы///////////////////////////////////////////
                 Excel.Worksheet worksheet = workbook.Sheets["Лист1"];
                 Excel.ListObject table = worksheet.ListObjects[tables[0]];
                 var IData = table.Range.Value;
@@ -208,7 +210,7 @@ namespace BusinessProxyApp
                 int rowCount = IData.GetLength(0);
                 int columnCount = IData.GetLength(1);
 
-                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                for (int i = 2; i <= rowCount; i++) 
                 {
                     object[] rowData = new object[columnCount];
 
@@ -222,7 +224,7 @@ namespace BusinessProxyApp
                     }
 
                 }
-                ///////////////////////////////////////////////////////////////////////////////////
+                /////////////////////Заполнение второй таблицы//////////////////////////////////////////////////////////////
                 worksheet = workbook.Sheets["Лист2"];
                 table = worksheet.ListObjects[tables[1]];
                 IData = table.Range.Value;
@@ -230,7 +232,7 @@ namespace BusinessProxyApp
                 rowCount = IData.GetLength(0);
                 columnCount = IData.GetLength(1);
                 
-                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                for (int i = 2; i <= rowCount; i++) 
                 {
                     object[] rowData = new object[columnCount];
 
@@ -244,7 +246,7 @@ namespace BusinessProxyApp
                     }
                     
                 }
-                //////////////////////////////////////////////////////////////////////////////////////////
+                /////////////////////////Заполнение третьей таблицы/////////////////////////////////////////////////////////////////
                 worksheet = workbook.Sheets["Лист3"];
                 table = worksheet.ListObjects[tables[2]];
                 IData = table.Range.Value;
@@ -252,7 +254,7 @@ namespace BusinessProxyApp
                 rowCount = IData.GetLength(0);
                 columnCount = IData.GetLength(1);
 
-                for (int i = 2; i <= rowCount; i++) // Start from row 2 to skip the header row
+                for (int i = 2; i <= rowCount; i++) 
                 {
                     object[] rowData = new object[columnCount];
 
@@ -276,6 +278,149 @@ namespace BusinessProxyApp
             }
             workbook.Close();
             excelApp.Quit();
+        }
+
+        void repCreateDialog(string tmpPath)
+        {
+            if (MessageBox.Show("Отчёт создан, показать его?", "Создание отчёта", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Excel.Application App = new Excel.Application();
+                App.Workbooks.Open(tmpPath);
+                App.Visible = true;
+            }
+        }
+        /*
+         * Создание отчета Excel по ингредиентам
+         */
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string relativePath = Path.Combine(Environment.CurrentDirectory, "report1.xlsx");
+            var   table = this.bDCafeDataSet.Ингредиенты;
+            Excel.Application excel = new Excel.Application();
+            Excel.Workbook workbook = excel.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+            try
+            {
+                
+                worksheet.Cells[1, 1] = "Прайс-лист ингредиентов";
+                worksheet.Cells[1, 1].Font.Bold = true;
+                worksheet.Cells[1, 1].Font.Size = 16;
+
+                worksheet.Cells[2, 1] = "Дата составления отчета";
+                worksheet.Cells[2, 1].Font.Bold = true;
+                worksheet.Cells[2, 2] = DateTime.Now.ToShortDateString();
+
+               
+                int row = 4;
+                for (int i = 0; i < table.Columns.Count; i++)
+                {
+                    worksheet.Cells[row, i + 1] = table.Columns[i].ColumnName;
+                }
+
+                row++;
+                foreach (DataRow dr in table.Rows)
+                {
+                    for (int i = 0; i < table.Columns.Count; i++)
+                    {
+                        worksheet.Cells[row, i + 1] = dr[i].ToString();
+                    }
+                    row++;
+                }
+
+                
+                for (int i = 0; i < table.Columns.Count; i++)
+                {
+                    worksheet.Columns[i + 1].AutoFit();
+                }
+            }catch (Exception ex) { excel.Quit();MessageBox.Show(ex.Message); }
+            workbook.SaveAs(relativePath);
+            
+            
+            excel.Quit();
+            repCreateDialog(relativePath);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string relativePath = Path.Combine(Environment.CurrentDirectory, "report2.xlsx");
+
+            string dishID;
+
+
+            try
+            {
+               
+                dishID = recipeGridView.SelectedCells[0].OwningRow.Cells[1].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Для формирования отчета выберите строку из таблицы с ингредиентами");
+               
+                dishID = "1";
+            }
+
+            //Запрос на получение дочерних записей таблицы рецептов
+            var query = from r in bDCafeDataSet.Рецепты
+                        join d in bDCafeDataSet.Блюда on r.dish equals d.id
+                        join i in bDCafeDataSet.Ингредиенты on r.ingredient equals i.id
+                        where r.dish.ToString() == dishID
+                        select new
+                        {
+                            RecipeId = r.id,
+                            DishName = d.DishName,
+                            IngredientName = i.ProductName
+                        };
+            var table = query.ToList();
+            Excel.Application excel = new Excel.Application();
+            Excel.Workbook workbook = excel.Workbooks.Add();
+            Excel.Worksheet worksheet = workbook.ActiveSheet;
+            try
+            {
+                
+                worksheet.Cells[1, 2] = "Состав блюда ";
+                worksheet.Cells[1, 2].Font.Bold = true;
+                worksheet.Cells[1, 2].Font.Size = 18;
+
+                worksheet.Cells[2, 1] = "Дата составления отчета:";
+                worksheet.Cells[2, 2] = DateTime.Now.ToShortDateString();
+
+                worksheet.Cells[3, 2] = "Ниже представлены ингридиенты нашего блюда";
+                worksheet.Cells[3, 2].Font.Color = System.Drawing.Color.Crimson;
+                worksheet.Cells[3, 2].Font.Italic = true;   
+                //Загружаем данные
+                int row = 4;
+                foreach (var item in table)
+                {
+                    System.Drawing.Color rowcolor;
+                    if (row%2==0)
+                    {
+                        rowcolor = System.Drawing.Color.Chocolate;
+                    }else rowcolor = System.Drawing.Color.White;
+                    worksheet.Cells[row, 1] = item.RecipeId;
+                    worksheet.Cells[row, 1].Interior.Color= rowcolor;
+                    worksheet.Cells[row, 2] = item.DishName;
+                    worksheet.Cells[row, 2].Interior.Color= rowcolor;
+                    worksheet.Cells[row, 3] = item.IngredientName;
+                    worksheet.Cells[row, 3].Interior.Color= rowcolor;
+                    worksheet.Cells[row, 3].Font.Color = System.Drawing.Color.Aqua;
+                    row++;
+                }
+                worksheet.Range["A:B"].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                worksheet.Columns.AutoFit();
+
+
+                workbook.SaveAs(relativePath);
+
+                workbook.Close();
+                excel.Quit();
+                repCreateDialog(relativePath);
+            }
+            catch (Exception)
+            {
+                workbook.Close();
+                excel.Quit();
+                throw;
+            }
         }
     }
 }
