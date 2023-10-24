@@ -14,6 +14,8 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.IO;
 using System.Reflection;
 using System.CodeDom;
+using Microsoft.Office.Interop.Word;
+using System.Diagnostics;
 
 namespace BusinessProxyApp
 {
@@ -420,6 +422,120 @@ namespace BusinessProxyApp
                 workbook.Close();
                 excel.Quit();
                 throw;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string html = @"
+<html>
+<body>
+
+<h1>Рецепт блюда</h1>
+
+<p>Date: {0}</p> 
+
+<table border='1'>
+<tr>
+<th>Код</th>
+<th>Название блюда</th> 
+<th>Ингредиент</th>
+</tr>
+{1}
+</table>
+
+</body>
+</html>";
+            string dishID;
+
+
+            try
+            {
+
+                dishID = recipeGridView.SelectedCells[0].OwningRow.Cells[1].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Для формирования отчета выберите строку из таблицы с ингредиентами");
+
+                dishID = "1";
+            }
+
+            //Запрос на получение дочерних записей таблицы рецептов
+            var query = from r in bDCafeDataSet.Рецепты
+                        join d in bDCafeDataSet.Блюда on r.dish equals d.id
+                        join i in bDCafeDataSet.Ингредиенты on r.ingredient equals i.id
+                        where r.dish.ToString() == dishID
+                        select new
+                        {
+                            RecipeId = r.id,
+                            DishName = d.DishName,
+                            IngredientName = i.ProductName
+                        };
+            var table = query.ToList();
+
+            string rows = "";
+            foreach (var item in table)
+            {
+                rows += $"<tr>";
+                rows += $"<td>{item.RecipeId}</td>";
+                rows += $"<td>{item.DishName}</td>";
+                rows += $"<td>{item.IngredientName}</td>";
+                rows += "</tr>";
+            }
+            string tmppath;
+            //запихиваем всё в файл, второй и третий аргументы подставляются вместе с фигурными скобками в html
+            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString(), rows);
+            if (HTMLSaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                tmppath = HTMLSaveDialog.FileName;
+                File.WriteAllText(HTMLSaveDialog.FileName, htmlContent);
+                Process.Start(tmppath);
+            }
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var table = this.bDCafeDataSet.Ингредиенты;
+            string html = @"<html>
+                  <body>
+                  
+                  <h1>Прайс-лист ингредиентов</h1>
+                  
+                  <p>Дата составления отчета: {0}</p>
+                  
+                  <table border='1'>
+                  <tr> <th> Код </th>
+<th> Название ингредиента</th >
+<th> Цена </th ></tr>";
+
+            
+           
+
+            
+
+            foreach (DataRow row in table.Rows)
+            {
+                html += "<tr>";
+                foreach (DataColumn col in table.Columns)
+                {
+                    html += $"<td>{row[col.ColumnName]}</td>";
+                }
+                html += "</tr>";
+            }
+
+            html += "</table></body></html>";
+
+           
+            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString());
+            string tmppath;
+           
+            if (HTMLSaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                tmppath = HTMLSaveDialog.FileName;
+                File.WriteAllText(HTMLSaveDialog.FileName, htmlContent);
+                Process.Start(tmppath);
             }
         }
     }
