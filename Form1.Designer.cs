@@ -68,11 +68,11 @@
             this.UpdateButton2 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.timesheetEdit = new System.Windows.Forms.DataGridView();
-            this.timeTableEdit = new System.Windows.Forms.BindingSource(this.components);
-            this.UpdateButton3 = new System.Windows.Forms.Button();
             this.workDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.isPresentDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.timeTableEdit = new System.Windows.Forms.BindingSource(this.components);
+            this.UpdateButton3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -87,6 +87,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.wordSummaryButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDTimeSheetDataSet)).BeginInit();
@@ -269,7 +276,7 @@
             this.fullNameDataGridViewTextBoxColumn,
             this.jobDataGridViewTextBoxColumn});
             this.employeesTable.DataSource = this.employeesBindingSource;
-            this.employeesTable.Location = new System.Drawing.Point(21, 61);
+            this.employeesTable.Location = new System.Drawing.Point(21, 56);
             this.employeesTable.Name = "employeesTable";
             this.employeesTable.RowHeadersVisible = false;
             this.employeesTable.Size = new System.Drawing.Size(348, 150);
@@ -330,7 +337,7 @@
             this.titleDataGridViewTextBoxColumn,
             this.baseSalaryDataGridViewTextBoxColumn});
             this.jobsTable.DataSource = this.jobsBindingSource;
-            this.jobsTable.Location = new System.Drawing.Point(545, 61);
+            this.jobsTable.Location = new System.Drawing.Point(545, 56);
             this.jobsTable.Name = "jobsTable";
             this.jobsTable.RowHeadersVisible = false;
             this.jobsTable.Size = new System.Drawing.Size(361, 150);
@@ -373,7 +380,7 @@
             this.employeeDataGridViewTextBoxColumn,
             this.isPresentDataGridViewCheckBoxColumn});
             this.timesheetTable.DataSource = this.timeTableBindingSource;
-            this.timesheetTable.Location = new System.Drawing.Point(21, 284);
+            this.timesheetTable.Location = new System.Drawing.Point(21, 279);
             this.timesheetTable.Name = "timesheetTable";
             this.timesheetTable.ReadOnly = true;
             this.timesheetTable.RowHeadersVisible = false;
@@ -421,7 +428,7 @@
             // UpdateButton1
             // 
             this.UpdateButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateButton1.Location = new System.Drawing.Point(375, 61);
+            this.UpdateButton1.Location = new System.Drawing.Point(375, 56);
             this.UpdateButton1.Name = "UpdateButton1";
             this.UpdateButton1.Size = new System.Drawing.Size(74, 88);
             this.UpdateButton1.TabIndex = 3;
@@ -432,7 +439,7 @@
             // UpdateButton2
             // 
             this.UpdateButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateButton2.Location = new System.Drawing.Point(932, 61);
+            this.UpdateButton2.Location = new System.Drawing.Point(932, 56);
             this.UpdateButton2.Name = "UpdateButton2";
             this.UpdateButton2.Size = new System.Drawing.Size(78, 88);
             this.UpdateButton2.TabIndex = 4;
@@ -442,7 +449,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(545, 258);
+            this.dateTimePicker1.Location = new System.Drawing.Point(545, 253);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(300, 20);
             this.dateTimePicker1.TabIndex = 5;
@@ -458,29 +465,13 @@
             this.employeeDataGridViewTextBoxColumn1,
             this.isPresentDataGridViewCheckBoxColumn1});
             this.timesheetEdit.DataSource = this.timeTableEdit;
-            this.timesheetEdit.Location = new System.Drawing.Point(545, 284);
+            this.timesheetEdit.Location = new System.Drawing.Point(545, 279);
             this.timesheetEdit.Name = "timesheetEdit";
             this.timesheetEdit.RowHeadersVisible = false;
             this.timesheetEdit.Size = new System.Drawing.Size(300, 150);
             this.timesheetEdit.TabIndex = 6;
             this.timesheetEdit.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.timesheetEdit_DataError);
             this.timesheetEdit.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.timesheetEdit_UserAddedRow);
-            // 
-            // timeTableEdit
-            // 
-            this.timeTableEdit.DataMember = "TimeTable";
-            this.timeTableEdit.DataSource = this.bDTimeSheetDataSet;
-            // 
-            // UpdateButton3
-            // 
-            this.UpdateButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateButton3.Location = new System.Drawing.Point(851, 284);
-            this.UpdateButton3.Name = "UpdateButton3";
-            this.UpdateButton3.Size = new System.Drawing.Size(87, 88);
-            this.UpdateButton3.TabIndex = 7;
-            this.UpdateButton3.Text = "Обновить";
-            this.UpdateButton3.UseVisualStyleBackColor = true;
-            this.UpdateButton3.Click += new System.EventHandler(this.UpdateButton3_Click);
             // 
             // workDateDataGridViewTextBoxColumn1
             // 
@@ -507,10 +498,26 @@
             this.isPresentDataGridViewCheckBoxColumn1.Name = "isPresentDataGridViewCheckBoxColumn1";
             this.isPresentDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // timeTableEdit
+            // 
+            this.timeTableEdit.DataMember = "TimeTable";
+            this.timeTableEdit.DataSource = this.bDTimeSheetDataSet;
+            // 
+            // UpdateButton3
+            // 
+            this.UpdateButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UpdateButton3.Location = new System.Drawing.Point(851, 279);
+            this.UpdateButton3.Name = "UpdateButton3";
+            this.UpdateButton3.Size = new System.Drawing.Size(87, 88);
+            this.UpdateButton3.TabIndex = 7;
+            this.UpdateButton3.Text = "Обновить";
+            this.UpdateButton3.UseVisualStyleBackColor = true;
+            this.UpdateButton3.Click += new System.EventHandler(this.UpdateButton3_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(542, 233);
+            this.label1.Location = new System.Drawing.Point(542, 228);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 8;
@@ -519,7 +526,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 258);
+            this.label2.Location = new System.Drawing.Point(18, 253);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 13);
             this.label2.TabIndex = 9;
@@ -528,7 +535,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 24);
+            this.label3.Location = new System.Drawing.Point(18, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 10;
@@ -537,7 +544,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(542, 24);
+            this.label4.Location = new System.Drawing.Point(542, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 11;
@@ -549,7 +556,7 @@
             this.TimesheetFilter.DataSource = this.employeesBindingSource;
             this.TimesheetFilter.DisplayMember = "FullName";
             this.TimesheetFilter.FormattingEnabled = true;
-            this.TimesheetFilter.Location = new System.Drawing.Point(173, 255);
+            this.TimesheetFilter.Location = new System.Drawing.Point(173, 250);
             this.TimesheetFilter.Name = "TimesheetFilter";
             this.TimesheetFilter.Size = new System.Drawing.Size(121, 21);
             this.TimesheetFilter.TabIndex = 12;
@@ -558,7 +565,7 @@
             // 
             // JobFilter
             // 
-            this.JobFilter.Location = new System.Drawing.Point(629, 25);
+            this.JobFilter.Location = new System.Drawing.Point(629, 15);
             this.JobFilter.Name = "JobFilter";
             this.JobFilter.Size = new System.Drawing.Size(100, 20);
             this.JobFilter.TabIndex = 15;
@@ -567,7 +574,7 @@
             // ClearFilters
             // 
             this.ClearFilters.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ClearFilters.Location = new System.Drawing.Point(375, 30);
+            this.ClearFilters.Location = new System.Drawing.Point(375, 25);
             this.ClearFilters.Name = "ClearFilters";
             this.ClearFilters.Size = new System.Drawing.Size(63, 20);
             this.ClearFilters.TabIndex = 16;
@@ -578,7 +585,7 @@
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(375, 255);
+            this.button2.Location = new System.Drawing.Point(375, 250);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 20);
             this.button2.TabIndex = 17;
@@ -589,9 +596,9 @@
             // button3
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Location = new System.Drawing.Point(932, 24);
+            this.button3.Location = new System.Drawing.Point(932, 14);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 20);
+            this.button3.Size = new System.Drawing.Size(63, 22);
             this.button3.TabIndex = 18;
             this.button3.Text = "Очистить";
             this.button3.UseVisualStyleBackColor = true;
@@ -599,7 +606,7 @@
             // 
             // EmployeesFilter
             // 
-            this.EmployeesFilter.Location = new System.Drawing.Point(99, 30);
+            this.EmployeesFilter.Location = new System.Drawing.Point(99, 25);
             this.EmployeesFilter.Name = "EmployeesFilter";
             this.EmployeesFilter.Size = new System.Drawing.Size(100, 20);
             this.EmployeesFilter.TabIndex = 19;
@@ -611,7 +618,7 @@
             this.EmployeesFilter1.DataSource = this.jobsBindingSource;
             this.EmployeesFilter1.DisplayMember = "Title";
             this.EmployeesFilter1.FormattingEnabled = true;
-            this.EmployeesFilter1.Location = new System.Drawing.Point(239, 29);
+            this.EmployeesFilter1.Location = new System.Drawing.Point(239, 24);
             this.EmployeesFilter1.Name = "EmployeesFilter1";
             this.EmployeesFilter1.Size = new System.Drawing.Size(121, 21);
             this.EmployeesFilter1.TabIndex = 14;
@@ -620,7 +627,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(932, 172);
+            this.button1.Location = new System.Drawing.Point(932, 167);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 20;
@@ -630,7 +637,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(374, 172);
+            this.button4.Location = new System.Drawing.Point(374, 167);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 21;
@@ -640,7 +647,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(851, 390);
+            this.button5.Location = new System.Drawing.Point(851, 385);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 22;
@@ -648,11 +655,89 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // wordSummaryButton
+            // 
+            this.wordSummaryButton.Location = new System.Drawing.Point(88, 507);
+            this.wordSummaryButton.Name = "wordSummaryButton";
+            this.wordSummaryButton.Size = new System.Drawing.Size(75, 23);
+            this.wordSummaryButton.TabIndex = 23;
+            this.wordSummaryButton.Text = "WORD";
+            this.wordSummaryButton.UseVisualStyleBackColor = true;
+            this.wordSummaryButton.Click += new System.EventHandler(this.wordSummaryButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.3F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(40, 485);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(153, 15);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "Сводка по сотруднику";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(88, 536);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 25;
+            this.button6.Text = "EXCEL";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.3F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(456, 485);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Вакансия";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(459, 536);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 28;
+            this.button7.Text = "EXCEL";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(459, 507);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "WORD";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(1001, 331);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(114, 98);
+            this.button9.TabIndex = 29;
+            this.button9.Text = "Импорт данных";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1138, 518);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.wordSummaryButton);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
@@ -752,6 +837,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button wordSummaryButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 
