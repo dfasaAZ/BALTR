@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
+using Microsoft.Office.Interop.Word;
 
 namespace BusinessProxyApp
 {
@@ -413,6 +415,101 @@ namespace BusinessProxyApp
             }
             workbook.Close();
             excelApp.Quit();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string html = @"
+<html>
+<body>
+<center>
+<h1>Табель посещений рабочего места сотрудником</h1>
+<p><b>{2}</b></p>
+
+<p>Сформировано {0}</p> 
+
+<table border='1'>
+<tr>
+<th>Дата</th>
+<th>ФИО сотрудника</th> 
+<th>Присутствие</th>
+</tr>
+{1}
+</table>
+
+</body>
+</html>";
+            DataGridViewCell cell = null;
+
+
+            try
+            {
+                cell = timesheetTable.SelectedCells[0].OwningRow.Cells[1];
+
+            }
+            catch
+            {
+                MessageBox.Show("Для формирования документа выберите строку из таблицы сводка посещаемости");
+
+            }
+
+            var query = from r in bDTimeSheetDataSet.TimeTable
+                        join d in bDTimeSheetDataSet.Employees on r.Employee equals d.id
+                        where r.Employee.ToString() == cell.Value.ToString()
+                        select new
+                        {
+                            Date = r.WorkDate,
+                            FIO = d.FullName,
+                            IsPresent = r.IsPresent
+                        };
+            
+            var table = query.ToList();
+
+            string rows = "";
+            foreach (var item in table)
+            {
+                rows += $"<tr>";
+                rows += $"<td>{item.Date.ToShortDateString()}</td>";
+                rows += $"<td>{item.FIO}</td>";
+                rows += $"<td>{(item.IsPresent?("Присутствует"):("Отсутствует"))}</td>";
+                rows += "</tr>";
+            }
+            string tmppath;
+            //запихиваем всё в файл, второй и третий аргументы подставляются вместе с фигурными скобками в html
+            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString(), rows,cell.FormattedValue);
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                tmppath = saveFileDialog1.FileName;
+                File.WriteAllText(saveFileDialog1.FileName, htmlContent);
+                Process.Start(tmppath);
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var Job = jobsTable.SelectedCells[0].OwningRow;
+          
+            string html = @"<html>
+                  <body>
+                  <center>
+                  <h1>Внимание!!!</h1>
+                  <h2> Открыт набор на вакансию {1}</h2>
+                  <p>Данные актуальны на : {0}</p><br>
+                  Мы предлагаем комфортные условия работы, дружный коллектив и <br>конкурентную заработную плату в размере <ul><u><b>{2}</b></u></ul> Рублей <br>
+За дополнительной информацией обращайтесь в отдел кадров
+                 </body></html> ";
+
+
+
+            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString(), Job.Cells[1].Value, Job.Cells[2].Value.ToString());
+            string tmppath;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                tmppath = saveFileDialog1.FileName;
+                File.WriteAllText(saveFileDialog1.FileName, htmlContent);
+                Process.Start(tmppath);
+            }
         }
     }
 }
