@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("BusinessProxyApp")]
+[assembly: AssemblyTitle("Grafik")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BusinessProxyApp")]
+[assembly: AssemblyProduct("Grafik")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("d942ce7a-ac0a-4293-964d-134acca9f67d")]
+[assembly: Guid("c9b96a3f-5917-4ed0-b775-caf4e8eb0662")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

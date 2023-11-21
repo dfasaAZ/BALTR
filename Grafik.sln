@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeApp", "CafeApp.csproj", "{D942CE7A-AC0A-4293-964D-134ACCA9F67D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafik", "Grafik.csproj", "{C9B96A3F-5917-4ED0-B775-CAF4E8EB0662}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B96A3F-5917-4ED0-B775-CAF4E8EB0662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B96A3F-5917-4ED0-B775-CAF4E8EB0662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B96A3F-5917-4ED0-B775-CAF4E8EB0662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B96A3F-5917-4ED0-B775-CAF4E8EB0662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C547BF6A-6750-4154-8935-EDA97D7A4EBA}
+		SolutionGuid = {00A1B9C3-C4B0-43FA-9BDE-3B1DFD890EA5}
 	EndGlobalSection
 EndGlobal
