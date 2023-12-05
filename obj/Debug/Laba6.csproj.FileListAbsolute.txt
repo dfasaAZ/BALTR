@@ -1,0 +1,11 @@
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\Grafik.exe.config
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\Grafik.exe
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\bin\Debug\Grafik.pdb
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Laba6.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Laba6.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Lab6.Form1.resources
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Grafik.Properties.Resources.resources
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Laba6.csproj.GenerateResource.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Laba6.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Grafik.exe
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Grafik.pdb

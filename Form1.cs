@@ -1,533 +1,146 @@
-﻿using BusinessProxyApp.BDTimeSheetDataSetTableAdapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Word = Microsoft.Office.Interop.Word;
-using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
-using System.Diagnostics;
-using Microsoft.Office.Interop.Word;
-
-using WpfControlLibrary1;
-
-namespace BusinessProxyApp
+namespace Lab6
 {
-    public partial class MainForm : Form
+    public partial class Form1 : Form
     {
-        bool _isLoaded=false;
-        UserControl1 wpf_control;
-        public MainForm()
+        Font font;
+        SolidBrush brush;
+        public Form1()
         {
             InitializeComponent();
-            wpf_control = (UserControl1)elementHost1.Child;
-            wpf_control.TextChanged += Wpf_control_TextChanged;
-            wpf_control.Click += Wpf_control_Click;
-        }
-
-        private void Wpf_control_Click()
-        {
-            if (_isLoaded)
-            {
-                jobsBindingSource.Filter = "Title like '" + wpf_control.Text + "*'";
-            }
-        }
-
-        private void Wpf_control_TextChanged(object sender, string newValue)
-        {
-            wpf_control.Text=newValue;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDTimeSheetDataSet.TimeTable". При необходимости она может быть перемещена или удалена.
-            oleDbConnection1.ConnectionString.Replace(@"C:\\Users\\Lenovo\\Desktop\\Development\\BusinessApps\\BusinessProxyApp\\BDTimeSheet.accdb", Path.Combine(Environment.CurrentDirectory, "BDTimeSheet.accdb"));
-            this.timeTableTableAdapter.Fill(this.bDTimeSheetDataSet.TimeTable);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDTimeSheetDataSet.Jobs". При необходимости она может быть перемещена или удалена.
-            this.jobsTableAdapter.Fill(this.bDTimeSheetDataSet.Jobs);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bDTimeSheetDataSet.Employees". При необходимости она может быть перемещена или удалена.
-            this.employeesTableAdapter.Fill(this.bDTimeSheetDataSet.Employees);
-            dateTimePicker1_ValueChanged(sender,e);
-            _isLoaded = true;
+            //шрифт берем установленный по умолчанию
+            font = fontDialog1.Font;
+            //создаем сплошную кисть черного цвета
+            brush = new SolidBrush(Color.Black);
+            DrawGraph(pictureBox1);
+            pictureBox1.Invalidate();
         }
-
-        private void UpdateButton1_Click(object sender, EventArgs e)
+        private double f(double x)
         {
-            try
-            {
-                EmployeesAdapter.Update(bDTimeSheetDataSet);
-        }catch(Exception ex) { MessageBox.Show("Ошибка сохранения таблицы, проверьте поля на отсутствие дубликатов и/или ошибок в типе данных"); };
-}
+            
+            return (Math.Pow(Math.Sin(x), 2) * ((x - (2 / (x - 2))) / (1 + Math.Pow(1 + x, 2))));
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        }
+        private void DrawGraph(PictureBox pb)
         {
-            try
+          
+            //Отступы от краёв
+            int x0 = 15;
+            int y0 = (int)(pictureBox1.Height * 0.85);
+
+            double ymin = (double)(this.ymin.Value); 
+            double ymax = (double)(this.ymax.Value);
+            double xmin = (double)(this.xmin.Value);
+            double xmax = (double)(this.xmax.Value);
+            //Длина оси X
+            int Mx = pictureBox1.Width - 2 * x0;
+            //Длина оси Y
+            int My = -y0 + 10;
+
+            //Число точек графика			
+            int M = (int)pointsEdit.Value;
+
+            //Создание графического объекта
+            Graphics G = pictureBox1.CreateGraphics();
+            //Очистка PictureBox1
+            G.Clear(Color.White);
+
+            //Описание и создание массива точек		 
+            PointF[] p = new PointF[M];
+            
+            //Шаг построения графика
+            double step = 0.1;
+            int i=0;
+            //Цикл: от минимального икса до шага*количесво точек
+            for (double n = (double)this.xmin.Value; n < (double)this.xmin.Value+M*step; n+=step)
             {
-                timeTableEdit.Filter = string.Format("WorkDate = '{0:dd.MM.yyyy}'", dateTimePicker1.Value.Date.ToString());
-            }catch(Exception ex) { MessageBox.Show("Произошло что-то плохое"); }    
+                //Физические координаты
+                double x = n ;
+                double y = f(x);
+
+                //Экранные координаты
+                float xi = (float)(getPlotX(x)+x0);
+                float yi = (float)(y0-((y - ymin) / (ymax - ymin)* y0));
+
+                //заносим в массив вычисленные значения координат
+                p[i++] = new PointF(xi, yi);
+            }
+            //коэффициент упругости графика
+            float tension = (float)tensionEdit.Value;
+            
+                //рисование графика
+                G.DrawCurve(Pens.Green, p, tension);
+            
+            
+            
+            //Рисование оси Х
+            G.DrawLine(Pens.Black, x0, y0, x0 + Mx, y0);
+            //Рисование оси Y
+            G.DrawLine(Pens.Black, x0, y0, x0, y0 + My);
+
+            //Разметка оси Х
+            for (double n = 0; n < (xmax-xmin)/0.1; n++)
+            {
+                //физическая координата штриха
+                double x = n / ((xmax - xmin) / 0.1);
+                //экранная координата штриха
+                int xi = (int)(x0 + Mx * x);
+                //Наносим штрих
+                G.DrawLine(Pens.Black, xi, y0, xi, y0 + 4);
+                //Наносим число
+                G.DrawString((xmin+n*0.1).ToString(), font, brush, xi - 9, y0 + 4);
+            }
+            //Разметка оси Y
+            for (double n = 0; n < (ymax - ymin) ; n++)
+            {
+                //порядковый номер палочки
+                double y = n / (ymax-ymin);
+                //экранная координата, y0 - высота окна с графиком за вычетом отступа
+                int yi = y0-(int)(y*y0);
+                //Палочка, размером в 4 пикселя
+                G.DrawLine(Pens.Black, x0, yi, x0+4, yi);
+                //Пишем число справа от палочки на 4 пикселя, немного поднимаем на высоту шрифта,чтобы выровнять с палочками
+                G.DrawString((ymin + n).ToString(), font, brush, x0+4 , yi-font.Height );
             }
 
 
-        private void UpdateButton3_Click(object sender, EventArgs e)
+        }
+        double getPlotX(double x) 
+        {//возвращаем координату икса для picturebox
+            return ((x - ((double)xmin.Value)) / (double)(xmax.Value - xmin.Value) * pictureBox1.Width); 
+                }
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            this.Validate();
-            timeTableEdit.EndEdit();
-            try{
-                TimeTableAdapter.Update(bDTimeSheetDataSet);
-            }catch(Exception ex) { MessageBox.Show("Ошибка сохранения таблицы, проверьте поля на отсутствие дубликатов и/или ошибок в типе данных"); };
+            DrawGraph(pictureBox1);
         }
 
-        private void timesheetEdit_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        private void pictureBox1_Paint(object sender, EventArgs e)
         {
-            timesheetEdit.Rows[e.Row.Index - 1].Cells[0].Value = dateTimePicker1.Value.Date;
+            DrawGraph(pictureBox1);
         }
-
-        private void timesheetEdit_DataError(object sender, DataGridViewDataErrorEventArgs e)
-        {
-            MessageBox.Show("Ошибка ввода данных, проверьте уникальность столбов");
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (jobsBindingSource.Filter != null)
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
             {
-                jobsBindingSource.RemoveFilter();
-            }
-            if (employeesBindingSource.Filter!=null)
-            {
-                employeesBindingSource.RemoveFilter();
-            }
-            
-            if (timeTableBindingSource.Filter != null)
-            {
-                timeTableBindingSource.RemoveFilter();
-            }
-            
-            
-            
-        }
-
-        private void EmployeesFilter_TextChanged(object sender, EventArgs e)
-        {
-            employeesBindingSource.Filter="FullName like '"+EmployeesFilter.Text+"*'";
-        }
-
-        private void EmployeesFilter1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_isLoaded)
-            {
-                employeesBindingSource.Filter = "Job = " + EmployeesFilter1.SelectedValue;
-            }
-            
-        }
-
-        private void JobFilter_TextChanged(object sender, EventArgs e)
-        {
-            if (_isLoaded)
-            {
-                jobsBindingSource.Filter = "Title like '" + JobFilter.Text + "*'";
-            }
-        }
-
-        private void TimesheetFilter_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (_isLoaded)
-            {
-                timeTableBindingSource.Filter = "Employee = " + TimesheetFilter.SelectedValue;
-            }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
-            jobsTable.Rows.RemoveAt(jobsTable.SelectedCells[0].RowIndex);
-        }
-
-        private void UpdateButton2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                JobsAdapter.Update(bDTimeSheetDataSet);
-            }
-            catch (Exception ex) { MessageBox.Show("Ошибка сохранения таблицы, проверьте поля на отсутствие дубликатов и/или ошибок в типе данных"); };
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            employeesTable.Rows.RemoveAt(employeesTable.SelectedCells[0].RowIndex);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            timesheetEdit.Rows.RemoveAt(timesheetEdit.SelectedCells[0].RowIndex);
-        }
-        void docCreateDialog(string tmpPath)
-        {
-            if (MessageBox.Show("Открыть документ", "Создание документа", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Word.Application wordApp = new Word.Application();
-                wordApp.Documents.Open(tmpPath);
-                wordApp.Visible = true;
-            }
-        }
-        private void wordSummaryButton_Click(object sender, EventArgs e)
-        {
-            string templateName = "template1.docx";
-            string relativePath = Path.Combine(Environment.CurrentDirectory, templateName);
-            DataGridViewCell cell=null;
-
-
-            try
-            {
-                cell = timesheetTable.SelectedCells[0].OwningRow.Cells[1];
-                
-            }
-            catch
-            {
-                MessageBox.Show("Для формирования документа выберите строку из таблицы сводка посещаемости");
-               
-            }
-            Word.Application wordApp = new Word.Application();
-            Word.Document doc = wordApp.Documents.Open(relativePath);
-            try
-            {
-                doc.Content.Find.Execute("<name>", ReplaceWith: cell.EditedFormattedValue.ToString());
-                doc.Content.Find.Execute("<date>", ReplaceWith: DateTime.Now.ToShortDateString());
-                var query = from r in bDTimeSheetDataSet.TimeTable
-                            join d in bDTimeSheetDataSet.Employees on r.Employee equals d.id
-                            where r.Employee.ToString() == cell.Value.ToString()
-                            select new
-                            {
-                                Date = r.WorkDate,
-                                FIO = d.FullName,
-                                IsPresent = r.IsPresent
-                            };
-                var tableMark = doc.Bookmarks["table"].Range;
-                var tmpTable = query.ToList();
-                Word.Table table = doc.Tables.Add(tableMark, tmpTable.Count() + 1, 3);
-                table.Cell(1, 1).Range.Text = "Дата";
-                table.Cell(1, 2).Range.Text = "Сотрудник";
-                table.Cell(1, 3).Range.Text = "Наличие на раб. месте";
-                table.Borders.Enable = 1;
-                int rowIndex = 2;
-                foreach (var row in tmpTable)
-                {
-                    table.Cell(rowIndex, 1).Range.Text = row.Date.ToShortDateString();
-                    table.Cell(rowIndex, 2).Range.Text = row.FIO;
-                    table.Cell(rowIndex, 3).Range.Text = row.IsPresent?"Присутствовал":"Отсутствовал";
-
-                    rowIndex++;
-                }
-            }
-            catch { doc.Close(); wordApp.Quit(); }
-            doc.SaveAs2("filled_report.docx");
-            string tmpPath = doc.FullName;
-            doc.Close();
-            wordApp.Quit();
-            docCreateDialog(tmpPath);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            string templateName = "template2.docx";
-            string relativePath = Path.Combine(Environment.CurrentDirectory, templateName);
-
-            DataGridViewRow row = null;
-
-            try
-            {
-              row = jobsTable.SelectedCells[0].OwningRow;
-
-            }
-            catch
-            {
-                MessageBox.Show("Для формирования документа выберите строку из таблицы с должностями");
-                
-            }
-
-            Word.Application wordApp = new Word.Application();
-            Word.Document doc = wordApp.Documents.Open(relativePath);
-
-            doc.Content.Find.Execute("<jobtype>", ReplaceWith: row.Cells[1].Value.ToString());
-            doc.Content.Find.Execute("<salary>", ReplaceWith: row.Cells[2].Value.ToString());
-
-            doc.SaveAs2("filled_vacancy.docx");
-            string tmpPath = doc.FullName;
-            doc.Close();
-            wordApp.Quit();
-            docCreateDialog(tmpPath);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            DataGridViewCell cell = timesheetTable.SelectedCells[0].OwningRow.Cells[1];
-
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook workbook = excelApp.Workbooks.Add();
-            Excel.Worksheet worksheet = workbook.Worksheets[1];
-            worksheet.Cells[1, 2] = "Сводка посещаемости сотрудника";
-            worksheet.Cells[1, 3] = cell.FormattedValue;
-            worksheet.Cells[1, 3].Font.Bold = true;
-
-            worksheet.Cells[3, 1] = "Дата";
-            worksheet.Cells[3, 2] = "Сотрудник";
-            worksheet.Cells[3, 3] = "Наличие на раб. месте";
-
-            var query = from r in bDTimeSheetDataSet.TimeTable
-                        join d in bDTimeSheetDataSet.Employees on r.Employee equals d.id
-                        where r.Employee.ToString() == cell.Value.ToString()
-                        select new
-                        {
-                            Date = r.WorkDate,
-                            FIO = d.FullName,
-                            IsPresent = r.IsPresent
-                        };
-
-            int row = 4;
-            foreach (var item in query)
-            {
-                worksheet.Cells[row, 1] = item.Date;
-                worksheet.Cells[row, 2] = item.FIO;
-                worksheet.Cells[row, 3] = item.IsPresent ? "Присутствовал" : "Отсутствовал";
-                row++;
-            }
-            Excel.Range t = worksheet.Range["A6:C6"];
-            t.Merge();
-            worksheet.Cells[row, 1] = "Прогулы являются поводом для увольнения, все отсутствия должны быть подкреплены уважительной причиной.";
-            worksheet.Cells[row, 1].Font.Italic = true;
-            worksheet.Columns.AutoFit();
-            workbook.SaveAs("ExcelSummary.xlsx");
-            excelApp.Quit();
-
-            ShowExcelDialog("ExcelSummary.xlsx");
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow row = jobsTable.SelectedCells[0].OwningRow;
-
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook workbook = excelApp.Workbooks.Add();
-            Excel.Worksheet worksheet = workbook.Worksheets[1];
-
-            worksheet.Cells[1, 1] = "Внимание!!!";
-            worksheet.Cells[1, 1].Font.Bold = true;
-
-            worksheet.Cells[2, 2] = "У ООО 'Пупырка' открывается набор на должность";
-            worksheet.Cells[2, 3] = row.Cells[1].Value;
-            worksheet.Cells[2, 3].Font.Bold = true;
-            worksheet.Columns[2].AutoFit();
-
-            worksheet.Cells[3, 1] = "Мы предлагаем много хорошего и ничего плохого";
-
-            worksheet.Cells[4, 2] = "И готовы платить вам невообразимые"; 
-            worksheet.Cells[5, 2] = row.Cells[2].Value;
-            worksheet.Cells[5, 2].Font.Bold = true;
-            worksheet.Cells[5, 2].Font.Size = 48;
-
-            worksheet.Cells[5, 3] = "рублей";
-            workbook.SaveAs("ExcelVacancy.xlsx");
-            excelApp.Quit();
-
-            ShowExcelDialog("ExcelVacancy.xlsx");
-        }
-        private void ShowExcelDialog(string filePath)
-        {
-            if (MessageBox.Show("Открыть документ?", "Готово", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Excel.Application excelApp = new Excel.Application();
-                Excel.Workbook workbook = excelApp.Workbooks.Open(filePath);
-                excelApp.Visible = true;
-            }
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-
-            var tables = new[] { "Таблица_Employees", "Таблица_Jobs", "Таблица_TimeTable" };
-            string relativePath = Path.Combine(Environment.CurrentDirectory, "ExcelImport.xlsx");
-            Excel.Application excelApp = new Excel.Application();
-            Excel.Workbook workbook = excelApp.Workbooks.Open(relativePath);
-            try
-            {///////////////////////Заполнение первой таблицы///////////////////////////////////////////
-                Excel.Worksheet worksheet = workbook.Sheets[tables[1]];
-                Excel.ListObject table = worksheet.ListObjects[tables[1]];
-                var IData = table.Range.Value;
-
-                int rowCount = IData.GetLength(0);
-                int columnCount = IData.GetLength(1);
-
-                for (int i = 2; i <= rowCount; i++)
-                {
-                    object[] rowData = new object[columnCount];
-
-                    for (int j = 1; j <= columnCount; j++)
-                    {
-                        rowData[j - 1] = IData[i, j];
-                    }
-                    if (!bDTimeSheetDataSet.Jobs.Rows.Contains(rowData[0]))
-                    {
-                        bDTimeSheetDataSet.Jobs.Rows.Add(rowData);
-                    }
-
-                }
-                /////////////////////Заполнение второй таблицы//////////////////////////////////////////////////////////////
-                worksheet = workbook.Sheets[tables[0]];
-                table = worksheet.ListObjects[tables[0]];
-                IData = table.Range.Value;
-
-                rowCount = IData.GetLength(0);
-                columnCount = IData.GetLength(1);
-
-                for (int i = 2; i <= rowCount; i++)
-                {
-                    object[] rowData = new object[columnCount];
-
-                    for (int j = 1; j <= columnCount; j++)
-                    {
-                        rowData[j - 1] = IData[i, j];
-                    }
-                    if (!bDTimeSheetDataSet.Employees.Rows.Contains(rowData[0]))
-                    {
-                        bDTimeSheetDataSet.Employees.Rows.Add(rowData);
-                    }
-
-                }
-                /////////////////////////Заполнение третьей таблицы/////////////////////////////////////////////////////////////////
-                worksheet = workbook.Sheets[tables[2]];
-                table = worksheet.ListObjects[tables[2]];
-                IData = table.Range.Value;
-
-                rowCount = IData.GetLength(0);
-                columnCount = IData.GetLength(1);
-
-                for (int i = 2; i <= rowCount; i++)
-                {
-                    object[] rowData = new object[columnCount];
-
-                    for (int j = 1; j <= columnCount; j++)
-                    {
-                        rowData[j - 1] = IData[i, j];
-                    }
-                    if (!bDTimeSheetDataSet.TimeTable.Rows.Contains(new Object[]{ rowData[0], rowData[1]}))//так замудрено потому что в таблице составной первичный ключ
-                    {
-                        bDTimeSheetDataSet.TimeTable.Rows.Add(rowData);
-                    }
-
-                }
-                //////////////////////////////////////////////////////////////////////////////////////////////////
-            }
-            catch (Exception ex)
-            {
-                workbook.Close();
-                excelApp.Quit();
-                MessageBox.Show(ex.Message);
-
-            }
-            workbook.Close();
-            excelApp.Quit();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            string html = @"
-<html>
-<body>
-<center>
-<h1>Табель посещений рабочего места сотрудником</h1>
-<p><b>{2}</b></p>
-
-<p>Сформировано {0}</p> 
-
-<table border='1'>
-<tr>
-<th>Дата</th>
-<th>ФИО сотрудника</th> 
-<th>Присутствие</th>
-</tr>
-{1}
-</table>
-
-</body>
-</html>";
-            DataGridViewCell cell = null;
-
-
-            try
-            {
-                cell = timesheetTable.SelectedCells[0].OwningRow.Cells[1];
-
-            }
-            catch
-            {
-                MessageBox.Show("Для формирования документа выберите строку из таблицы сводка посещаемости");
-
-            }
-
-            var query = from r in bDTimeSheetDataSet.TimeTable
-                        join d in bDTimeSheetDataSet.Employees on r.Employee equals d.id
-                        where r.Employee.ToString() == cell.Value.ToString()
-                        select new
-                        {
-                            Date = r.WorkDate,
-                            FIO = d.FullName,
-                            IsPresent = r.IsPresent
-                        };
-            
-            var table = query.ToList();
-
-            string rows = "";
-            foreach (var item in table)
-            {
-                rows += $"<tr>";
-                rows += $"<td>{item.Date.ToShortDateString()}</td>";
-                rows += $"<td>{item.FIO}</td>";
-                rows += $"<td>{(item.IsPresent?("Присутствует"):("Отсутствует"))}</td>";
-                rows += "</tr>";
-            }
-            string tmppath;
-            //запихиваем всё в файл, второй и третий аргументы подставляются вместе с фигурными скобками в html
-            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString(), rows,cell.FormattedValue);
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                tmppath = saveFileDialog1.FileName;
-                File.WriteAllText(saveFileDialog1.FileName, htmlContent);
-                Process.Start(tmppath);
-            }
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            var Job = jobsTable.SelectedCells[0].OwningRow;
-          
-            string html = @"<html>
-                  <body>
-                  <center>
-                  <h1>Внимание!!!</h1>
-                  <h2> Открыт набор на вакансию {1}</h2>
-                  <p>Данные актуальны на : {0}</p><br>
-                  Мы предлагаем комфортные условия работы, дружный коллектив и <br>конкурентную заработную плату в размере <ul><u><b>{2}</b></u></ul> Рублей <br>
-За дополнительной информацией обращайтесь в отдел кадров
-                 </body></html> ";
-
-
-
-            string htmlContent = string.Format(html, DateTime.Now.ToShortDateString(), Job.Cells[1].Value, Job.Cells[2].Value.ToString());
-            string tmppath;
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                tmppath = saveFileDialog1.FileName;
-                File.WriteAllText(saveFileDialog1.FileName, htmlContent);
-                Process.Start(tmppath);
+                //получить параметры шрифта из диалогового окна 
+                font = fontDialog1.Font;
+                //получить цвет шрифта из того же окна
+                brush.Color = fontDialog1.Color;
             }
         }
     }
