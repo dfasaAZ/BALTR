@@ -16,14 +16,33 @@ using Microsoft.Office.Interop.Excel;
 using System.Diagnostics;
 using Microsoft.Office.Interop.Word;
 
+using WpfControlLibrary1;
+
 namespace BusinessProxyApp
 {
     public partial class MainForm : Form
     {
         bool _isLoaded=false;
+        UserControl1 wpf_control;
         public MainForm()
         {
             InitializeComponent();
+            wpf_control = (UserControl1)elementHost1.Child;
+            wpf_control.TextChanged += Wpf_control_TextChanged;
+            wpf_control.Click += Wpf_control_Click;
+        }
+
+        private void Wpf_control_Click()
+        {
+            if (_isLoaded)
+            {
+                jobsBindingSource.Filter = "Title like '" + wpf_control.Text + "*'";
+            }
+        }
+
+        private void Wpf_control_TextChanged(object sender, string newValue)
+        {
+            wpf_control.Text=newValue;
         }
 
         private void Form1_Load(object sender, EventArgs e)

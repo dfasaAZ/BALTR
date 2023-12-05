@@ -97,6 +97,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.userControl11 = new WpfControlLibrary1.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.employeesTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDTimeSheetDataSet)).BeginInit();
@@ -572,6 +574,7 @@
             this.JobFilter.Name = "JobFilter";
             this.JobFilter.Size = new System.Drawing.Size(100, 20);
             this.JobFilter.TabIndex = 15;
+            this.JobFilter.Visible = false;
             this.JobFilter.TextChanged += new System.EventHandler(this.JobFilter_TextChanged);
             // 
             // ClearFilters
@@ -754,12 +757,22 @@
             this.saveFileDialog1.FileName = "webpage";
             this.saveFileDialog1.Filter = "HTML Files|*.html";
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(613, -4);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(274, 54);
+            this.elementHost1.TabIndex = 32;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.userControl11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1138, 518);
+            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -878,6 +891,8 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private WpfControlLibrary1.UserControl1 userControl11;
     }
 }
 
