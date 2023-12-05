@@ -17,14 +17,36 @@ using System.CodeDom;
 using Microsoft.Office.Interop.Word;
 using System.Diagnostics;
 
+//Наш элемент WPF
+using WpfControlLibrary1;
+
 namespace BusinessProxyApp
 {
+
     public partial class Form1 : Form
     {
+        UserControl1 wpf_control;//Переменная, чтобы взаимодействовать с нашим элементом
         public Form1()
         {
             
             InitializeComponent();
+            wpf_control = (UserControl1)elementHost1.Child;//Вставляем в переменную содержимое elementHost1
+            //Привязка событий к функциям
+            wpf_control.TextChanged += Wpf_control_TextChanged;
+            wpf_control.Click += Wpf_control_Click;
+
+        }
+
+        private void Wpf_control_Click()
+        {
+            блюдаBindingSource.Filter = "DishName like '*" + wpf_control.Text + "*'";
+            
+        }
+
+        private void Wpf_control_TextChanged(object sender, string newValue)
+        {
+            wpf_control.Text = newValue;
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,12 +57,7 @@ namespace BusinessProxyApp
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDCafeDataSet.Ингредиенты". При необходимости она может быть перемещена или удалена.
             this.ингредиентыTableAdapter.Fill(this.bDCafeDataSet.Ингредиенты);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "bDCafeDataSet.Блюда". При необходимости она может быть перемещена или удалена.
-            this.блюдаTableAdapter.Fill(this.bDCafeDataSet.Блюда);
-
-            
-           
-
-            
+            this.блюдаTableAdapter.Fill(this.bDCafeDataSet.Блюда); 
         }
 
         private void deleteButton1_Click(object sender, EventArgs e)

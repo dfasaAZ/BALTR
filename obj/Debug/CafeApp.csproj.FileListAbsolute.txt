@@ -13,3 +13,8 @@ C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\Cafe
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\CafeApp.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.exe
 C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.pdb
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\UserControl1.baml
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\UserControl1.g.cs
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp_Content.g.cs
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp_MarkupCompile.cache
+C:\Users\Lenovo\Desktop\Development\BusinessApps\BusinessProxyApp\obj\Debug\BusinessProxyApp.g.resources

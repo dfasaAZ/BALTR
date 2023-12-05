@@ -89,6 +89,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
+            this.userControl11 = new WpfControlLibrary1.UserControl1();
             ((System.ComponentModel.ISupportInitialize)(this.dishGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.блюдаBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDCafeDataSet)).BeginInit();
@@ -426,6 +428,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.elementHost1);
             this.panel1.Controls.Add(this.SaveButton3);
             this.panel1.Controls.Add(this.SaveButton2);
             this.panel1.Controls.Add(this.SaveButton1);
@@ -527,6 +530,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(155, 20);
             this.textBox1.TabIndex = 5;
+            this.textBox1.Visible = false;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // comboBox2
@@ -677,6 +681,15 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // elementHost1
+            // 
+            this.elementHost1.Location = new System.Drawing.Point(3, 227);
+            this.elementHost1.Name = "elementHost1";
+            this.elementHost1.Size = new System.Drawing.Size(279, 44);
+            this.elementHost1.TabIndex = 7;
+            this.elementHost1.Text = "elementHost1";
+            this.elementHost1.Child = this.userControl11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -769,6 +782,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private WpfControlLibrary1.UserControl1 userControl11;
     }
 }
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeApp", "CafeApp.csproj", "{D942CE7A-AC0A-4293-964D-134ACCA9F67D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfControlLibrary1", "WpfControlLibrary1\WpfControlLibrary1.csproj", "{8783D144-621A-4521-B9DA-19A0C728041F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D942CE7A-AC0A-4293-964D-134ACCA9F67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8783D144-621A-4521-B9DA-19A0C728041F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8783D144-621A-4521-B9DA-19A0C728041F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8783D144-621A-4521-B9DA-19A0C728041F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8783D144-621A-4521-B9DA-19A0C728041F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
