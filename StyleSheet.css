@@ -1,0 +1,11 @@
+﻿body {
+    background-image: url('res/background.jpg?ts=1');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div {
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    background-color:greenyellow;
+}
